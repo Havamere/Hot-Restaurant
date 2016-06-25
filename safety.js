@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-
 var app = express();
 var PORT = 3000;
 
@@ -11,7 +10,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-require('./app/routing/api-routes.js')(app);
 
 app.get('/', function(req, res){
     //res.send("Welcome to the Hot Restaurant Page!")
@@ -27,7 +25,31 @@ app.get('/tables', function(req, res){
     res.sendFile(path.join(__dirname + '/app/public/tables.html'));
 })
 
-app.get()
+app.get('/api/:tableData?', function(req, res){
+
+    res.sendFile(path.join(__dirname + '/app/data/table-data.js'));
+
+    var customer = req.params.tableData;
+
+    if(customer){
+        console.log(customer);
+
+        for (var i=0; i <tableData.length; i++){
+
+            if (customer == tableData[i].routeName){
+                res.json(tableData[i]);
+                return;
+            }
+        }
+
+        res.json(false);
+    }
+
+    else{
+        res.json(tableData);
+    }
+})
+
 
 app.listen(PORT, function(){
     console.log('App listening on PORT ' + PORT);
