@@ -16,21 +16,19 @@ require('./app/routing/api-routes.js')(app);
 app.get('/', function(req, res){
     //res.send("Welcome to the Hot Restaurant Page!")
     res.sendFile(path.join(__dirname + '/app/public/home.html'));
-})
+});
 
 app.get('/reservations', function(req, res){
     //res.send("Welcome to the Hot Restaurant Page!")
     res.sendFile(path.join(__dirname + '/app/public/reservations.html'));
-})
+});
 
 app.get('/tables', function(req, res){
     res.sendFile(path.join(__dirname + '/app/public/tables.html'));
-})
-
-app.get()
+});
 
 app.listen(PORT, function(){
     console.log('App listening on PORT ' + PORT);
-})
+});
 
 

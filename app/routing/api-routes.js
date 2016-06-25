@@ -30,7 +30,7 @@ module.exports = function(app) {
         else {
             res.json(tableData);
         }
-    })
+    });
 
     app.get('/api/:waitinglist-data?', function (req, res) {
 
@@ -57,4 +57,4 @@ module.exports = function(app) {
         }
     })
 
-}
+};
