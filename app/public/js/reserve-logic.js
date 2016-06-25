@@ -7,7 +7,13 @@ $(document).ready(function(){
 			email:  $('#exampleInputEmail').val().trim(),
 			unique:  $('#exampleInputID').val().trim()
 		};
-		
+		$.ajax({
+			method: "POST",
+			url: "/api/tableData",
+			data: reservation,
+		}).done(function(msg){
+			//modal command
+		})
 	})
 
 
