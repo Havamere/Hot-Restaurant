@@ -25,7 +25,29 @@ app.get('/tables', function(req, res){
     res.sendFile(path.join(__dirname + '/app/public/tables.html'));
 })
 
+app.get('/api/:tableData?', function(req, res){
+    res.sendFile(path.join(__dirname + '/app/data/table-data.js'));
 
+    var customers = req.params.tableData;
+
+    if(customers){
+        console.log(customers);
+
+        for (var i=0; i <tableData.length; i++){
+
+            if (customers == tableData[i].routeName){
+                res.json(tableData[i]);
+                return;
+            }
+        }
+
+        res.json(false);
+    }
+
+    else{
+        res.json(tableData);
+    }
+})
 
 
 app.listen(PORT, function(){
